@@ -1,0 +1,25 @@
+
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "types": ["node"]
+  },
+  "include": [
+    "*.ts",
+    "routes/**/*.ts",
+    "controllers/**/*.ts",
+    "services/**/*.ts",
+    "middleware/**/*.ts",
+    "validators/**/*.ts",
+    "generated/**/*.ts"
+  ],
+  "exclude": ["node_modules"]
+}

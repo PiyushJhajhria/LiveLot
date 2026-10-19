@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b1020" />
+    <title>LiveLot — Find your next great piece</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='20' fill='%233457d5'/%3E%3Cpath d='M18 15h9v27h20v8H18z' fill='white'/%3E%3Ccircle cx='46' cy='18' r='5' fill='%238be0c0'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#browse" aria-label="LiveLot home"><span class="brand-mark" aria-hidden="true"><span>L</span><i></i></span>LiveLot</a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a class="nav-link is-active" href="#browse" id="browse-link">Home</a>
+        <a class="nav-link" href="#auction-section" id="auctions-link">Browse lots</a>
+        <a class="nav-link" href="#how-it-works">How it works</a>
+      </nav>
+      <form id="search-form" class="search-box" role="search">
+        <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 5 5"></path></svg>
+        <label class="visually-hidden" for="auction-search">Search auctions</label>
+        <input id="auction-search" type="search" placeholder="Search lots" autocomplete="off" />
+        <button id="clear-search" class="search-clear" type="button" aria-label="Clear search" hidden>×</button>
+      </form>
+      <div class="header-actions">
+        <button id="account-action" class="button button--quiet" type="button">Sign in</button>
+        <button id="signup-action" class="button button--join" type="button">Join LiveLot</button>
+        <button id="signout-action" class="button button--quiet" type="button" hidden>Sign out</button>
+        <button id="sell-action" class="button button--dark" type="button">List an item</button>
+      </div>
+    </header>
+
+    <main id="browse-view" data-home="true">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-line"></span>A considered marketplace</p>
+          <h1 id="hero-title">The next great<br />find is <em>in play.</em></h1>
+          <p class="hero-intro">Discover remarkable pieces, follow the story of each sale, and place your bid when it feels right.</p>
+          <a class="button button--light" href="#auction-section">Explore the lots <span aria-hidden="true">↘</span></a>
+          <span class="hero-note">Thoughtful finds. Fair bidding. A new story for every lot.</span>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="glass-orb glass-orb--back"></div>
+          <div class="glass-card glass-card--one"><span>LOT 018</span><b>Objects<br />with a past.</b><i>LIVELOT SELECT</i></div>
+          <div class="glass-card glass-card--two"><span class="glass-card__spark">✳</span><b>Find<br />your story.</b><i>CURATED FINDS</i></div>
+          <div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div>
+          <div class="hero-seal"><span>LL</span><small>LIVE<br />AUCTIONS</small></div>
+          <span class="hero-caption">A marketplace<br />for the remarkable</span>
+          <span class="hero-index">LIVELOT · 01</span>
+        </div>
+      </section>
+
+      <section id="auction-section" class="auction-section" aria-labelledby="auction-heading">
+        <div class="section-heading">
+          <div><p class="eyebrow eyebrow--ink">The current selection</p><h2 id="auction-heading">Auctions to explore<span class="heading-period">.</span></h2></div>
+          <button id="filter-open" class="button button--filter" type="button" aria-expanded="false" aria-controls="filter-drawer"><span aria-hidden="true">☷</span> Filters <span id="filter-current" class="filter-current">All lots</span></button>
+        </div>
+        <p id="auction-list-state" class="list-state" aria-live="polite">Loading auctions…</p>
+        <div id="auction-grid" class="auction-grid" aria-live="polite"></div>
+      </section>
+      <section id="how-it-works" class="how-section"><p class="eyebrow">Simple by design</p><h2>Find it. Follow it. <em>Make it yours.</em></h2><div class="how-steps"><article><span>01</span><h3>Explore</h3><p>Browse current and upcoming lots from the LiveLot community.</p></article><article><span>02</span><h3>Take your place</h3><p>Create an account to follow a sale and join the bidding.</p></article><article><span>03</span><h3>Make a move</h3><p>Submit a bid. The auction server checks every offer before it counts.</p></article></div></section>
+      <footer class="site-footer"><a class="brand brand--footer" href="#browse"><span class="brand-mark" aria-hidden="true"><span>L</span><i></i></span>LiveLot</a><span>Thoughtful auctions, open to everyone.</span><a href="#browse">Back to top ↑</a></footer>
+    </main>
+
+    <div id="filter-backdrop" class="drawer-backdrop" hidden></div>
+    <aside id="filter-drawer" class="filter-drawer" aria-labelledby="filter-title" aria-hidden="true" inert>
+      <div class="drawer-heading"><div><p class="eyebrow">Refine your view</p><h2 id="filter-title">Auction filters</h2></div><button id="filter-close" class="icon-button" type="button" aria-label="Close filters">×</button></div>
+      <label class="drawer-field">Sale status<select id="status-filter" aria-label="Filter auctions by status"><option value="ALL">All statuses</option><option value="ACTIVE">Active</option><option value="UPCOMING">Upcoming</option><option value="ENDED">Ended</option><option value="CANCELLED">Cancelled</option></select></label>
+      <p class="drawer-note">Choose a status to narrow the current selection. Search by title from the navigation bar.</p>
+      <button id="filter-apply" class="button button--primary" type="button">Show auctions</button>
+    </aside>
+
+    <main id="detail-view" class="detail-view" hidden>
+      <div class="detail-topline"><button id="back-to-browse" class="back-link" type="button"><span aria-hidden="true">←</span> Browse auctions</button><span class="detail-brand-note">LIVELOT · AUCTION DETAIL</span></div>
+      <p id="notice" class="notice" role="status" aria-live="polite" hidden></p>
+      <div id="detail-loading" class="detail-loading" hidden>Loading auction details…</div>
+      <section id="auction-detail" class="detail-layout" hidden>
+        <div id="detail-visual" class="detail-visual" aria-label="Auction images"></div>
+        <div class="detail-main">
+          <div class="detail-title-row"><div><p id="auction-status" class="status-badge">—</p><p id="auction-start-time" class="detail-kicker"></p><h1 id="auction-title"></h1></div><button id="share-auction" class="icon-button" type="button" aria-label="Copy auction link" title="Copy auction link"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><path d="m8.7 10.5 6.6-4m-6.6 7 6.6 4"></path></svg></button></div>
+          <p id="auction-description" class="detail-description"></p>
+          <div class="detail-facts"><div><span>Starting bid</span><strong id="starting-price">—</strong></div><div><span>Sale status</span><strong id="detail-status-text">—</strong></div></div>
+          <section class="bid-panel" aria-labelledby="bid-panel-heading">
+            <p class="eyebrow eyebrow--ink">Make your move</p><h2 id="bid-panel-heading">Current bid <strong id="current-price">—</strong></h2>
+            <p id="auction-time-remaining" class="time-remaining"></p>
+            <p id="bid-hint" class="bid-hint">Sign in to place a bid.</p>
+            <form id="bid-form" class="bid-form"><label class="visually-hidden" for="bid-amount">Your bid amount</label><div class="amount-field"><span aria-hidden="true">$</span><input id="bid-amount" name="amount" type="number" min="0.01" step="0.01" inputmode="decimal" placeholder="Enter your bid" required /></div><button id="bid-submit" class="button button--primary" type="submit">Place bid <span aria-hidden="true">↗</span></button></form>
+            <p class="bid-footnote">Bids are final once accepted. The server verifies every bid.</p>
+          </section>
+          <section class="history-section"><div class="history-heading"><div><p class="eyebrow eyebrow--ink">Sale activity</p><h2>Bid history</h2></div><button id="refresh-history" class="text-button" type="button">Refresh</button></div><p id="history-state" class="list-state" aria-live="polite">Loading bid history…</p><ol id="bid-history" class="bid-history"></ol></section>
+        </div>
+      </section>
+      <section id="detail-error" class="detail-error" hidden><h1>We couldn’t load this lot.</h1><p id="detail-error-message"></p><button class="button button--dark" id="error-back" type="button">Back to auctions</button></section>
+    </main>
+
+    <dialog id="account-dialog" class="modal">
+      <form method="dialog"><button class="modal-close" aria-label="Close">×</button></form>
+      <div class="modal-heading"><p class="eyebrow eyebrow--ink">Your LiveLot account</p><h2 id="account-title">Welcome back.</h2><p id="account-description" class="muted">Sign in to follow a sale and place bids.</p></div>
+      <form id="account-form" class="modal-form">
+        <label id="name-field" hidden>Your name<input id="account-name" name="name" autocomplete="name" maxlength="100" /></label>
+        <label>Email address<input id="account-email" name="email" type="email" autocomplete="email" required /></label>
+        <label>Password<input id="account-password" name="password" type="password" minlength="8" maxlength="72" autocomplete="current-password" required /><small id="password-help" class="field-help">Use 8–72 characters.</small></label>
+        <p id="account-error" class="form-error" role="alert" hidden></p>
+        <button id="account-submit" class="button button--primary" type="submit">Sign in</button>
+      </form>
+      <p class="modal-switch"><span id="account-switch-copy">New to LiveLot?</span> <button id="account-switch" class="text-button" type="button">Create an account</button></p>
+    </dialog>
+
+    <dialog id="sell-dialog" class="modal">
+      <form method="dialog"><button class="modal-close" aria-label="Close">×</button></form>
+      <div class="modal-heading"><p class="eyebrow eyebrow--ink">Offer something remarkable</p><h2>List an auction.</h2><p class="muted">Your auction starts as upcoming. The lifecycle worker activates it at its start time.</p></div>
+      <form id="sell-form" class="modal-form">
+        <label>Title<input name="title" maxlength="200" required /></label>
+        <label>Description<textarea name="description" maxlength="5000" rows="3"></textarea></label>
+        <label>Starting price<input name="startingPrice" type="number" min="0.01" step="0.01" required /></label>
+        <label>Ends at<input name="endTime" type="datetime-local" required /></label>
+        <label>Images <input id="auction-images" name="images" type="file" accept="image/jpeg,image/png,image/webp,image/gif" multiple /><small class="field-help">Choose images more than once to add them. Up to 6 images, 5 MB each.</small></label>
+        <label id="cover-index-field" hidden>Cover image<select id="cover-index" name="coverIndex"></select></label>
+        <p id="image-preview" class="image-preview" aria-live="polite"></p>
+        <ul id="image-selection" class="image-selection" aria-label="Selected images"></ul>
+        <p id="sell-error" class="form-error" role="alert" hidden></p>
+        <button id="sell-submit" class="button button--primary" type="submit">Create auction</button>
+      </form>
+    </dialog>
+
+    <script src="http://localhost:5000/socket.io/socket.io.js"></script>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
