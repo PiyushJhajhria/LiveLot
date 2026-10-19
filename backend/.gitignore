@@ -7,7 +7,7 @@ node_modules/
 !.env.example
 
 # Generated Prisma client
-/backend/generated/prisma/
+/generated/prisma/
 
 # Build outputs
 dist/

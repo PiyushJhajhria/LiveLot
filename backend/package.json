@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "tsx watch server.ts",
     "start": "tsx server.ts",
-    "test": "tsx --test *.test.ts"
+    "test": "tsx --test *.test.ts",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate:deploy": "prisma migrate deploy",
+    "postinstall": "prisma generate"
   },
   "keywords": [],
   "author": "",
